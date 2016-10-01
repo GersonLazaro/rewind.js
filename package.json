@@ -1,0 +1,22 @@
+{
+  "name": "rewind.js",
+  "version": "0.0.1",
+  "description": "Reproductor web moderno y personalizable",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GersonLazaro/rewind.js.git"
+  },
+  "keywords": [
+    "player",
+    "reproductor",
+    "rewind"
+  ],
+  "author": "Gerson Lázaro <gersonlazaro@gersonlazaro.com (https://www.gersonlazaro.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GersonLazaro/rewind.js/issues",
+    "email": "gersonlazaro@gersonlazaro.com"
+  },
+  "homepage": "https://github.com/GersonLazaro/rewind.js#readme"
+
+}
