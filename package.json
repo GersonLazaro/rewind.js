@@ -17,6 +17,12 @@
     "url": "https://github.com/GersonLazaro/rewind.js/issues",
     "email": "gersonlazaro@gersonlazaro.com"
   },
-  "homepage": "https://github.com/GersonLazaro/rewind.js#readme"
-
+  "homepage": "https://github.com/GersonLazaro/rewind.js#readme",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.16.0",
+    "browserify": "^13.1.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "vinyl-source-stream": "^1.1.0"
+  }
 }
