@@ -24,6 +24,7 @@ var Player = exports.Player = function () {
         key: 'createPlayerDOM',
         value: function createPlayerDOM() {
             var player = document.createElement('div');
+            player.className = 'rewind-player-embedded';
             player.appendChild(this.controls.controlsDOM);
             return player;
         }

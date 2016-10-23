@@ -22,14 +22,18 @@ var Controls = exports.Controls = function () {
 		key: 'createplayButton',
 		value: function createplayButton() {
 			var button = document.createElement('button');
-			//button.innerHTML = '<span ></span>'
-			button.className = "rewind-player-play-btn rewind-play";
+			if (this.video.paused) {
+				button.className = 'rewind-player-play-btn rewind-play';
+			} else {
+				button.className = 'rewind-player-play-btn rewind-pause';
+			}
 			return button;
 		}
 	}, {
 		key: 'createControlsDOM',
 		value: function createControlsDOM() {
 			var controls = document.createElement('div');
+			controls.className = 'rewind-controls';
 			controls.appendChild(this.playButton);
 			return controls;
 		}

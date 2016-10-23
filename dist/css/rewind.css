@@ -126,3 +126,18 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+.rewind-player{
+	position: relative;
+
+}
+.rewind-player video {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+.rewind-player .rewind-player-embedded {
+	position: absolute;
+	z-index: 10;
+}

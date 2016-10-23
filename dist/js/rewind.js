@@ -23,14 +23,18 @@ var Controls = exports.Controls = function () {
 		key: 'createplayButton',
 		value: function createplayButton() {
 			var button = document.createElement('button');
-			//button.innerHTML = '<span ></span>'
-			button.className = "rewind-player-play-btn rewind-play";
+			if (this.video.paused) {
+				button.className = 'rewind-player-play-btn rewind-play';
+			} else {
+				button.className = 'rewind-player-play-btn rewind-pause';
+			}
 			return button;
 		}
 	}, {
 		key: 'createControlsDOM',
 		value: function createControlsDOM() {
 			var controls = document.createElement('div');
+			controls.className = 'rewind-controls';
 			controls.appendChild(this.playButton);
 			return controls;
 		}
@@ -111,6 +115,7 @@ var Player = exports.Player = function () {
         key: 'createPlayerDOM',
         value: function createPlayerDOM() {
             var player = document.createElement('div');
+            player.className = 'rewind-player-embedded';
             player.appendChild(this.controls.controlsDOM);
             return player;
         }
@@ -148,6 +153,9 @@ var Rewind = exports.Rewind = function () {
 			var rewind = document.createElement('section');
 			rewind.className = "rewind-player";
 			rewind.appendChild(this.player.playerDOM);
+			rewind.style.width = this.video.clientWidth + 'px';
+			console.log(rewind.style.width);
+			rewind.style.height = this.video.clientHeight + 'px';
 			return rewind;
 		}
 	}, {

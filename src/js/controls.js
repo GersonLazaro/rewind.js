@@ -1,19 +1,23 @@
 export class Controls {
 	constructor(video) {
 		this.video = video
-		this.playButton = this.createplayButton()
+        this.playButton = this.createplayButton()
 		this.controlsDOM = this.createControlsDOM()
 		this.addListeners()
 	}
 
 	createplayButton() {
 		let button = document.createElement('button')
-			//button.innerHTML = '<span ></span>'
-		button.className = "rewind-player-play-btn rewind-play"
+        if (this.video.paused) {
+            button.className = 'rewind-player-play-btn rewind-play'
+        } else {
+            button.className = 'rewind-player-play-btn rewind-pause'
+        }
 		return button
 	}
 	createControlsDOM() {
 		let controls = document.createElement('div')
+        controls.className = 'rewind-controls'
 		controls.appendChild(this.playButton)
 		return controls
 	}

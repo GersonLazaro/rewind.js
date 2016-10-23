@@ -27,6 +27,9 @@ var Rewind = exports.Rewind = function () {
 			var rewind = document.createElement('section');
 			rewind.className = "rewind-player";
 			rewind.appendChild(this.player.playerDOM);
+			rewind.style.width = this.video.clientWidth + 'px';
+			console.log(rewind.style.width);
+			rewind.style.height = this.video.clientHeight + 'px';
 			return rewind;
 		}
 	}, {

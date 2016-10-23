@@ -12,6 +12,8 @@ export class Rewind {
 		let rewind = document.createElement('section')
 		rewind.className = "rewind-player"
 		rewind.appendChild(this.player.playerDOM)
+		rewind.style.width = this.video.clientWidth + 'px'
+		rewind.style.height = this.video.clientHeight + 'px'
 		return rewind
 	}
 

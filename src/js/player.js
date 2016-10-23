@@ -9,6 +9,7 @@ export class Player {
 
     createPlayerDOM() {
         let player = document.createElement('div')
+        player.className = 'rewind-player-embedded'
         player.appendChild(this.controls.controlsDOM) 
         return player
     }
