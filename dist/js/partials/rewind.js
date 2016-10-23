@@ -32,7 +32,8 @@ var Rewind = exports.Rewind = function () {
 	}, {
 		key: 'loadPlayer',
 		value: function loadPlayer() {
-			document.body.appendChild(this.rewindDOM);
+			document.body.replaceChild(this.rewindDOM, this.video);
+			this.rewindDOM.appendChild(this.video);
 		}
 	}]);
 

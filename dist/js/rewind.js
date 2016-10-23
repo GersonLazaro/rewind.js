@@ -1,8 +1,8 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -10,35 +10,65 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Controls = exports.Controls = function () {
-    function Controls() {
-        _classCallCheck(this, Controls);
+	function Controls(video) {
+		_classCallCheck(this, Controls);
 
-        this.video = video;
-        this.buttonPlay = this.createButtonPlay();
-        this.controlsDOM = this.createControlsDOM();
-    }
+		this.video = video;
+		this.playButton = this.createplayButton();
+		this.controlsDOM = this.createControlsDOM();
+		this.addListeners();
+	}
 
-    _createClass(Controls, [{
-        key: "createButtonPlay",
-        value: function createButtonPlay() {
-            var button = document.createElement('button');
-            button.innerHTML = "\ea1c";
-            button.className = "rewind-player-play-btn";
-            return button;
-        }
-    }, {
-        key: "createControlsDOM",
-        value: function createControlsDOM() {
-            var controls = document.createElement('div');
-            controls.appendChild(this.buttonPlay);
-            return controls;
-        }
-    }, {
-        key: "addListeners",
-        value: function addListeners() {}
-    }]);
+	_createClass(Controls, [{
+		key: 'createplayButton',
+		value: function createplayButton() {
+			var button = document.createElement('button');
+			//button.innerHTML = '<span ></span>'
+			button.className = "rewind-player-play-btn rewind-play";
+			return button;
+		}
+	}, {
+		key: 'createControlsDOM',
+		value: function createControlsDOM() {
+			var controls = document.createElement('div');
+			controls.appendChild(this.playButton);
+			return controls;
+		}
+	}, {
+		key: 'playOrPause',
+		value: function playOrPause() {
+			if (this.video.paused) {
+				this.video.play();
+				this.replaceClass(this.playButton, 'rewind-pause', 'rewind-play');
+			} else {
+				this.video.pause();
+				this.replaceClass(this.playButton, 'rewind-play', 'rewind-pause');
+			}
+		}
+	}, {
+		key: 'replaceClass',
+		value: function replaceClass(element, newClass, oldClass) {
+			if (element.classList) {
+				element.classList.remove(oldClass);
+			} else {
+				element.className = element.className.replace(new RegExp('(^|\\b)' + oldClass.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+			}
 
-    return Controls;
+			if (element.classList) element.classList.add(newClass);else element.className += ' ' + newClass;
+		}
+	}, {
+		key: 'addListeners',
+		value: function addListeners() {
+			var _this = this;
+
+			console.log(this.video);
+			this.playButton.addEventListener('click', function (e) {
+				return _this.playOrPause();
+			});
+		}
+	}]);
+
+	return Controls;
 }();
 },{}],2:[function(require,module,exports){
 'use strict';
@@ -123,7 +153,8 @@ var Rewind = exports.Rewind = function () {
 	}, {
 		key: 'loadPlayer',
 		value: function loadPlayer() {
-			document.body.appendChild(this.rewindDOM);
+			document.body.replaceChild(this.rewindDOM, this.video);
+			this.rewindDOM.appendChild(this.video);
 		}
 	}]);
 

@@ -47,11 +47,11 @@
 	content: "\e994";
 }
 
-.rewind-defaultplay3:before {
+.rewind-play:before {
 	content: "\ea1c";
 }
 
-.rewind-defaultpause2:before {
+.rewind-pause:before {
 	content: "\ea1d";
 }
 
